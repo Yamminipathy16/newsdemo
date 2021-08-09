@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'formsdemo';
+  name='Jk';
+  age=25;
+  message:string|undefined;
+  
 }

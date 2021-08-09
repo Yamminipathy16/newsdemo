@@ -1,0 +1,79 @@
+<p>vdf works!</p>
+
+<form [formGroup]="ReactiveLogin" (ngSubmit)="Check()" novalidate>
+   
+  
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username"   name="username" formControlName="uname" />
+    </p>
+    <div *ngIf="!uname1?.valid && (uname1?.dirty || uname1?.touched)">
+        <div *ngIf="uname1?.errors?.required">
+            Username is mandatory
+        </div>
+        <div *ngIf="uname1?.errors?.minlength">
+            Minimum 5 letters needed
+
+        </div>
+    </div>
+
+    
+        
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" formControlName="pwd" pattern="^[a-zA-z]*"/>
+    </p>
+    <div *ngIf="!pwd1?.valid && (pwd1?.dirty || pwd1?.touched)">
+        <div *ngIf="pwd1?.errors?.required">
+            Username is mandatory
+        </div>
+        <div *ngIf="pwd1?.errors?.minlength">
+            Minimum 5 letters needed
+
+        </div>
+        <div *ngIf="pwd1?.errors?.pattern">
+            Password should contain letters
+
+        </div>
+
+    </div>
+
+   
+    <p>
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" id="cpassword" name="cpassword" formControlName= "cpwd"/>
+    </p>
+    <p>
+        <label for="Male">Male</label>
+        <input type="radio" name="ra1" id="Male" value="Male" formControlName="ra1"/>
+
+        <label for="Female">Female</label>
+        <input type="radio" name="ra1" id="Female" value="Female" formControlName="ra1"/>
+        <label for="Others">Others</label>
+        <input type="radio" name="ra1" id="Others" value="Others" formControlName="ra1"/>
+    </p>
+    <div *ngIf="rd1?.errors?.required">
+       This field is mandatory
+    </div>
+    <p>
+        <label for="country">Country</label>      
+        
+        <select id="country" name="country" formControlName="ct">
+                <option value="India">India</option>
+                <option value="Union Territories">Union Territories</option>
+                <option value="Other than India">Other than India</option>
+    </select>
+    </p>
+    
+        <div *ngIf="ct1?.errors?.required">
+            This field is mandatory
+        </div>
+    
+    
+    <p>
+        <button type="submit" >Register</button>
+    </p>
+    
+    
+</form>
+

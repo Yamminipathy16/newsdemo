@@ -1,0 +1,42 @@
+<p>tdf works!</p>
+<form #loginForm="ngForm" (ngSubmit)="Login(loginForm)" novalidate>
+    {{loginForm.value | json}}
+  
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username"  #name1 required minlength="10" name="username" #name ="ngModel" [(ngModel)]= 'user.username' />
+    </p>
+    
+        <div *ngIf="!name?.valid && (name?.dirty ||name?.touched)">
+            <div *ngIf="name.errors?.required">
+                username is mandatory
+            </div>
+            <div *ngIf="name.errors?.minlength">
+                username should be 10 characters.
+            </div>
+        </div>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" #pass  minlength="10" #pwd="ngModel"  name="password" [(ngModel)]='user.password' pattern="^[a-zA-z]{10,}$"/>
+    </p>
+    <div *ngIf="!pwd?.valid && (pwd?.dirty ||pwd?.touched)">
+        <div *ngIf="pwd.errors?.required">
+            password is mandatory
+        </div>
+        <div *ngIf="pwd.errors?.minlength">
+            password should be 10 characters.
+        </div>
+        <div *ngIf="pwd.errors?.pattern">
+            password should be contain alphabets.
+        </div>
+    </div>
+    <p>
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" id="cpassword" name="cpassword" [(ngModel)]='user.cpassword'/>
+    </p>
+    <p>
+        <button type="submit"[disabled]="!loginForm.valid" >Submit</button>
+    </p>
+    
+    
+</form>
